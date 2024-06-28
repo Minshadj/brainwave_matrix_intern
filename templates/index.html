@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Link Scanner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+    margin-bottom: 20px; /* Optional: Add margin bottom for spacing */
+}
+
+.btn-block {
+    width: 100%; /* Ensure button fills the container width */
+}
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #f8f7f7;
+            text-align: center;
+            margin-top: 50px; /* Adjust the margin-top value as needed */
+        }
+        .form-group label {
+            color: white; 
+        }
+        
+        .result-card {
+    color: white;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(4, 32, 92, 0);
+    width: calc(100% - 25%); /* Subtract padding from the total width */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+        .result-card h2 {
+            color: white;
+        }
+        .result-card p {
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    
+            <h1 class="text-center">Phishing Link Scanner</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label for="url">Enter URL to check:</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Check</button>
+            </form>
+        </div>
+        {% if url %}
+            <div class="card result-card">
+                <p><strong>Phishing:</strong> {{ is_phishing }}</p>
+                <p><strong>Reason:</strong> {{ reason }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
